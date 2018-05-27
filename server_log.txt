@@ -7544,3 +7544,164 @@ v0.3d, (C)2005-2011 SA-MP Team
 [14:15:28] [faction] 1 factions loaded
 [14:15:28] [bank] 0 banks created
 [14:15:28] Number of vehicle models: 2
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3d, (C)2005-2011 SA-MP Team
+
+[11:56:27] filterscripts = ""  (string)
+[11:56:27] 
+[11:56:27] Server Plugins
+[11:56:27] --------------
+[11:56:27]  Loading plugin: mysql
+[11:56:29] 
+
+  > MySQL plugin R6-2 successfully loaded.
+
+[11:56:29]   Loaded.
+[11:56:29]  Loaded 1 plugins.
+
+[11:56:30] 
+[11:56:30] Ban list
+[11:56:30] --------
+[11:56:30]  Loaded: samp.ban
+[11:56:30] 
+[11:56:31] 
+[11:56:31] Filterscripts
+[11:56:31] ---------------
+[11:56:31]   Loaded 0 filterscripts.
+
+[11:56:31]  
+[11:56:31] MySQL Disconnect
+[11:56:31] Number of vehicle models: 0
+[11:56:43]  
+[11:56:43] MySQL Disconnect
+[11:56:43] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3d, (C)2005-2011 SA-MP Team
+
+[14:25:10] filterscripts = ""  (string)
+[14:25:10] 
+[14:25:10] Server Plugins
+[14:25:10] --------------
+[14:25:10]  Loading plugin: mysql
+[14:25:10] 
+
+  > MySQL plugin R6-2 successfully loaded.
+
+[14:25:10]   Loaded.
+[14:25:10]  Loaded 1 plugins.
+
+[14:25:10] 
+[14:25:10] Ban list
+[14:25:10] --------
+[14:25:10]  Loaded: samp.ban
+[14:25:10] 
+[14:25:10] 
+[14:25:10] Filterscripts
+[14:25:10] ---------------
+[14:25:10]   Loaded 0 filterscripts.
+
+[14:25:10]  
+[14:25:10] MySQL Disconnect
+[14:25:10] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3d, (C)2005-2011 SA-MP Team
+
+[14:25:39] filterscripts = ""  (string)
+[14:25:39] 
+[14:25:39] Server Plugins
+[14:25:39] --------------
+[14:25:39]  Loading plugin: mysql
+[14:25:39] 
+
+  > MySQL plugin R6-2 successfully loaded.
+
+[14:25:39]   Loaded.
+[14:25:39]  Loaded 1 plugins.
+
+[14:25:39] 
+[14:25:39] Ban list
+[14:25:39] --------
+[14:25:39]  Loaded: samp.ban
+[14:25:39] 
+[14:25:39] 
+[14:25:39] Filterscripts
+[14:25:39] ---------------
+[14:25:39]   Loaded 0 filterscripts.
+
+[14:25:39]  
+[14:25:39] =====================
+[14:25:39] MySQL Connected!
+[14:25:39] UserData Loaded!
+[14:25:39] BanData Loaded!
+[14:25:39] Kickdata Loaded!
+[14:25:39] Spawndata Loaded!
+[14:25:39] hackdata Loaded!
+[14:25:39] =====================
+[14:25:39]  
+[14:25:42] [vehicle] 2 vehicles loaded
+[14:25:42] [faction] 1 factions loaded
+[14:25:42] [bank] 0 banks created
+[14:25:42] Number of vehicle models: 2
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3d, (C)2005-2011 SA-MP Team
+
+[23:27:40] filterscripts = ""  (string)
+[23:27:40] 
+[23:27:40] Server Plugins
+[23:27:40] --------------
+[23:27:40]  Loading plugin: mysql
+[23:27:40] 
+
+  > MySQL plugin R6-2 successfully loaded.
+
+[23:27:40]   Loaded.
+[23:27:40]  Loaded 1 plugins.
+
+[23:27:40] 
+[23:27:40] Ban list
+[23:27:40] --------
+[23:27:40]  Loaded: samp.ban
+[23:27:40] 
+[23:27:40] 
+[23:27:40] Filterscripts
+[23:27:40] ---------------
+[23:27:40]   Loaded 0 filterscripts.
+
+[23:27:40]  
+[23:27:40] =====================
+[23:27:40] MySQL Connected!
+[23:27:40] UserData Loaded!
+[23:27:41] BanData Loaded!
+[23:27:41] Kickdata Loaded!
+[23:27:41] Spawndata Loaded!
+[23:27:41] hackdata Loaded!
+[23:27:41] =====================
+[23:27:41]  
+[23:27:43] [vehicle] 2 vehicles loaded
+[23:27:44] [faction] 1 factions loaded
+[23:27:44] [bank] 0 banks created
+[23:27:44] Number of vehicle models: 2

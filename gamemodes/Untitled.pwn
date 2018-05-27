@@ -14,15 +14,15 @@
 //                                  Defines                                  //
 //============================================================================//
 
-#define SERVER_NAME     "Apocalypse Role Play Serer TEST"
+#define SERVER_NAME     "MySQL Test"
 #define SERVER_TIME     "12"
 #define SERVER_MAP      "Apocalypse Role Play"
-#define SERVER_WEBSITE  "cafe.daum.net/Tarp"
+#define SERVER_WEBSITE  "cafe.daum.net/"
 
-#define SQL_HOST "localhost"
-#define SQL_USER "root"
-#define SQL_PASS ""
-#define SQL_DB 	 "battle"
+#define SQL_HOST "222.122.86.177"
+#define SQL_USER "reignking"
+#define SQL_PASS "djaak4250"
+#define SQL_DB 	 "reignking"
 
 #define Blue    "{003DF5}"
 #define Red     "{FF0000}"
@@ -45,6 +45,7 @@
 #define DIALOG_INVENTORY_USEDROP    201
 #define DIALOG_CAR_BUY              300
 #define DIALOG_BUILD                400
+#define DIALOG_SKILL 				500
 
 #define M_P 100
 #define WEAPON_HACK 46
@@ -90,6 +91,12 @@ forward Tuto4(playerid);
 
 forward IsABike(vehicleid);
 forward StartingTheVehicle(playerid);
+
+forward jumping(playerid);
+forward jumping_1(playerid);
+forward Deshing(playerid);
+forward StartTum(playerid);
+forward StopTum(playerid);
 
 //============================================================================//
 //                                  New's                                     //
@@ -350,6 +357,30 @@ new
 new
 	Text:HealthText[MAX_PLAYERS],
 	Text:ArmourText[MAX_PLAYERS]
+;
+
+//------------------------------------------------------------------------------
+// Raycity System
+// Timer
+new
+	JTimer[MAX_PLAYERS],
+ 	JTimer1[MAX_PLAYERS],
+	DTimer[MAX_PLAYERS],
+	STimer[MAX_PLAYERS],
+	StopTimer[MAX_PLAYERS]
+;
+
+// Skills
+new Jump[MAX_PLAYERS],
+	Desh[MAX_PLAYERS],
+	Startboost[MAX_PLAYERS],
+	Stopboost[MAX_PLAYERS]
+;
+
+// Skill Toggle (ON/OFF)
+new FastSkill[MAX_PLAYERS],
+	DeshSkill[MAX_PLAYERS],
+	JumpSkill[MAX_PLAYERS]
 ;
 //------------------------------------------------------------------------------
 // Bank System
@@ -938,9 +969,8 @@ public OnGameModeInit()
 {
     ManualVehicleEngineAndLights();
 	
-	
 	new stuff[128];
-	AutoSave = false;
+	AutoSave = true;
 
 	format(stuff, 128, "hostname %s", SERVER_NAME);
 	SendRconCommand(stuff);
@@ -1168,7 +1198,7 @@ public OnPlayerSpawn(playerid)
 	{
 	   	SetPlayerPos(playerid, 1475.4899,-1741.7511,13.5469);
 		SetPlayerVirtualWorld(playerid, 0);
-	    GivePlayerWeapon(playerid, 5, 99999);
+	    SafeGivePlayerWeapon(playerid, 5, 99999);
 	    SetTimerEx("Tuto1", 5000, false, "i", playerid);
 		return 1;
 	}
@@ -1247,6 +1277,19 @@ public OnPlayerConnect(playerid)
 	TextDrawSetOutline(ArmourText[playerid],1);
 	TextDrawSetProportional(ArmourText[playerid],1);
 	TextDrawSetShadow(ArmourText[playerid],1);
+	
+	KillTimer(JTimer[playerid]);
+    KillTimer(JTimer1[playerid]);
+    KillTimer(DTimer[playerid]);
+    KillTimer(STimer[playerid]);
+    KillTimer(StopTimer[playerid]);
+    Jump[playerid] = 0;
+    Desh[playerid] = 0;
+    Startboost[playerid] = 0;
+    Stopboost[playerid] = 0;
+    FastSkill[playerid] = 0;
+    DeshSkill[playerid] = 0;
+    JumpSkill[playerid] = 0;
 
     //================================================================//
     //                              MySQL part                        //
@@ -1307,6 +1350,13 @@ public OnPlayerDisconnect(playerid, reason)
 
 	TextDrawDestroy(HealthText[playerid]);
 	TextDrawDestroy(ArmourText[playerid]);
+	
+	KillTimer(JTimer[playerid]);
+    KillTimer(JTimer1[playerid]);
+    KillTimer(DTimer[playerid]);
+    KillTimer(STimer[playerid]);
+    KillTimer(StopTimer[playerid]);
+    
 	for(new i = 0; i < M_P; i++)
 	{
 		if (AcceptAdmin[i] != INVALID_PLAYER_ID)
@@ -1548,6 +1598,175 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			    }
 			}
 	    }
+	}
+//------------------------------------------------------------------------------
+// Raycity System
+    if (newkeys == KEY_SPRINT)//급출발_준비
+	{
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER && FastSkill[playerid] == 1)
+		{
+			if(Startboost[playerid] == 0 && GetCarSpeed(playerid) < 30)
+			{
+		    	KillTimer(STimer[playerid]);
+		    	Startboost[playerid] = 1;
+		    	STimer[playerid] = SetTimerEx("StartTum",300,0,"i",playerid);
+				return 1;
+			}
+			if(Startboost[playerid] == 1 && GetCarSpeed(playerid) < 30)
+			{
+		    	KillTimer(STimer[playerid]);
+		    	//차량 가속
+		    	Startboost[playerid] = 2;
+		    	new Float:x, Float:y, Float:z;
+  				new Float:x2, Float:y2, Float:g1;
+  				GetVehicleVelocity(GetPlayerVehicleID(playerid),x,y,z);
+      			GetVehicleZAngle(GetPlayerVehicleID(playerid),g1);
+       			x2 = x+(0.5 * floatsin(-g1, degrees));
+       			y2 = y+(0.5 * floatcos(-g1, degrees));
+        		SetVehicleVelocity(GetPlayerVehicleID(playerid), x2, y2, z);
+        		//차가 올라가는 효과
+        		new Float:Xv, Float:Yv, Float:Zv;
+        		GetVehicleVelocity(GetPlayerVehicleID(playerid),Xv,Yv,Zv);
+        		Xv = (0.1 * floatsin(g1, degrees));
+       			Yv = (0.1 * floatcos(g1, degrees));
+       			SetVehicleAngularVelocity(GetPlayerVehicleID(playerid), Yv, Xv, 0);
+
+		    	STimer[playerid] = SetTimerEx("StartTum",2000,0,"i",playerid);
+				return 1;
+			}
+		}
+	}
+
+	if (newkeys == KEY_JUMP)//급정지_준비
+	{
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER && FastSkill[playerid] == 1)
+		{
+        	if(Stopboost[playerid] == 0 && GetCarSpeed(playerid) > 60)
+			{
+		    	KillTimer(StopTimer[playerid]);
+		    	Stopboost[playerid] = 1;
+		    	StopTimer[playerid] = SetTimerEx("StopTum",300,0,"i",playerid);
+				return 1;
+			}
+			if(Stopboost[playerid] == 1 && GetCarSpeed(playerid) > 60)//급정지
+			{
+		    	KillTimer(StopTimer[playerid]);
+		    	//차량 감속
+		    	Stopboost[playerid] = 2;
+		    	new Float:x, Float:y, Float:z;
+  				new Float:x2, Float:y2, Float:g1;
+  				GetVehicleVelocity(GetPlayerVehicleID(playerid),x,y,z);
+      			GetVehicleZAngle(GetPlayerVehicleID(playerid),g1);
+       			x2 = x+(-0.5 * floatsin(-g1, degrees));
+       			y2 = y+(-0.5 * floatcos(-g1, degrees));
+        		SetVehicleVelocity(GetPlayerVehicleID(playerid), x2, y2, z);
+        		//차가 올라가는 효과
+        		new Float:Xv, Float:Yv, Float:Zv;
+        		GetVehicleVelocity(GetPlayerVehicleID(playerid),Xv,Yv,Zv);
+        		Xv = (-0.1 * floatsin(g1, degrees));
+       			Yv = (-0.1 * floatcos(g1, degrees));
+       			SetVehicleAngularVelocity(GetPlayerVehicleID(playerid), Yv, Xv, 0);
+
+		    	StopTimer[playerid] = SetTimerEx("StopTum",2000,0,"i",playerid);
+				return 1;
+			}
+		}
+	}
+
+    if (newkeys & KEY_ANALOG_LEFT)//칼치기_왼쪽
+	{
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER && DeshSkill[playerid] == 1)
+		{
+	    	if(Desh[playerid] == 0)
+	    	{
+	        	KillTimer(DTimer[playerid]);
+	        	new Float:x, Float:y, Float:z;
+  				new Float:x2, Float:y2, Float:g1;
+  				GetVehicleVelocity(GetPlayerVehicleID(playerid),x,y,z);
+   				GetVehicleZAngle(GetPlayerVehicleID(playerid),g1);
+	       		x2 = x+(0.35 * floatsin(-g1-90, degrees));
+       			y2 = y+(0.35 * floatcos(-g1-90, degrees));
+        		SetVehicleVelocity(GetPlayerVehicleID(playerid), x2, y2, z);
+  				Desh[playerid] = 1;
+  				JTimer[playerid] = SetTimerEx("Deshing",500,0,"i",playerid);
+  				return 1;
+			}
+	    }
+	}
+	if (newkeys & KEY_ANALOG_RIGHT)//칼치기_오른쪽
+	{
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER && DeshSkill[playerid] == 1)
+		{
+	    	if(Desh[playerid] == 0)
+	    	{
+	        	KillTimer(DTimer[playerid]);
+	        	new Float:x, Float:y, Float:z;
+  				new Float:x2, Float:y2, Float:g1;
+  				GetVehicleVelocity(GetPlayerVehicleID(playerid),x,y,z);
+      			GetVehicleZAngle(GetPlayerVehicleID(playerid),g1);
+       			x2 = x+(0.35 * floatsin(-g1+90, degrees));
+       			y2 = y+(0.35 * floatcos(-g1+90, degrees));
+        		SetVehicleVelocity(GetPlayerVehicleID(playerid), x2, y2, z);
+  				Desh[playerid] = 1;
+  				JTimer[playerid] = SetTimerEx("Deshing",500,0,"i",playerid);
+  				return 1;
+			}
+	    }
+	}
+    if (newkeys & KEY_ANALOG_DOWN)//점프
+	{
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER && JumpSkill[playerid] == 1)
+		{
+	    	if(Jump[playerid] == 0)//1단점프
+	    	{
+	    	    KillTimer(DTimer[playerid]);
+	        	KillTimer(JTimer[playerid]);
+				new Float:X, Float:Y, Float:Z, Float:A;
+				GetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z);
+				SetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z+0.2);
+				GetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+				SetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+				Jump[playerid] ++;
+				Desh[playerid] = 1;
+				Startboost[playerid] = 0;
+				JTimer[playerid] = SetTimerEx("jumping",1000,0,"i",playerid);
+				return 1;
+			}
+			if(Jump[playerid] == 1)//2단점프
+	    	{
+	    	    KillTimer(DTimer[playerid]);
+	        	KillTimer(JTimer[playerid]);
+				new Float:X, Float:Y, Float:Z, Float:A;
+				GetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z);
+				SetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z+0.2);
+				GetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+				SetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+				Jump[playerid] ++;
+				Desh[playerid] = 1;
+				Startboost[playerid] = 0;
+				JTimer[playerid] = SetTimerEx("jumping",1000,0,"i",playerid);
+				return 1;
+			}
+			if(Jump[playerid] == 2)//3단점프
+	    	{
+	        	KillTimer(DTimer[playerid]);
+	        	KillTimer(JTimer[playerid]);
+				new Float:Xv, Float:Yv, Float:Zv;
+				new Float:X, Float:Y, Float:Z;
+				new Float:Zangle;
+				GetVehicleVelocity(GetPlayerVehicleID(playerid),Xv,Yv,Zv);
+				GetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z);
+				GetVehicleZAngle(GetPlayerVehicleID(playerid), Zangle);
+ 				Xv = (0.17 * floatsin(Zangle, degrees));
+				Yv = (0.17 * floatcos(Zangle, degrees));
+				SetVehicleVelocity(GetPlayerVehicleID(playerid),X,Y,Z+0.2);
+				SetVehicleAngularVelocity(GetPlayerVehicleID(playerid), Yv, Xv, 0);
+				Jump[playerid] ++;
+				Desh[playerid] = 1;
+				JTimer1[playerid] = SetTimerEx("jumping_1",800,0,"i",playerid);
+				return 1;
+			}
+		}
 	}
     return 1;
 }
@@ -1805,7 +2024,99 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		PlayerInvIndex[playerid] = -1;
 		return 1;
 	}
-    
+    if(dialogid == DIALOG_SKILL)
+	{
+		if(response)
+		{
+		    if(listitem == 0)
+			{
+			    if (FastSkill[playerid] == 0 || DeshSkill[playerid] == 0 || JumpSkill[playerid] == 0)
+				{
+				    FastSkill[playerid] = 1;
+					DeshSkill[playerid] = 1;
+					JumpSkill[playerid] = 1;
+					SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] All skills has {00FF00}Enable");
+					ShowSkillDialog(playerid);
+					return 1;
+				}
+				if (FastSkill[playerid] == 1 && DeshSkill[playerid] == 1 && JumpSkill[playerid] == 1)
+				{
+				    FastSkill[playerid] = 0;
+					DeshSkill[playerid] = 0;
+					JumpSkill[playerid] = 0;
+					SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] All skills has {FF0000}Disable");
+					ShowSkillDialog(playerid);
+					return 1;
+				}
+		    }
+		    if(listitem == 1)
+			{
+			    if(FastSkill[playerid] == 0)
+			    {
+   					FastSkill[playerid] = 1;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Quick Start,Brake {FFFFFF}has {00FF00}Enable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			    if(FastSkill[playerid] == 1)
+			    {
+   					FastSkill[playerid] = 0;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Quick Start,Brake {FFFFFF}has {FF0000}Disable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			}
+			if(listitem == 2)
+			{
+			    if(DeshSkill[playerid] == 0)
+			    {
+   					DeshSkill[playerid] = 1;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Quick Slide {FFFFFF}has {00FF00}Enable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			    if(DeshSkill[playerid] == 1)
+			    {
+   					DeshSkill[playerid] = 0;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Quick Slide {FFFFFF}has {FF0000}Disable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			}
+			if(listitem == 3)
+			{
+			    if(JumpSkill[playerid] == 0)
+			    {
+   					JumpSkill[playerid] = 1;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Jump {FFFFFF}has {00FF00}Enable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			    if(JumpSkill[playerid] == 1)
+			    {
+   					JumpSkill[playerid] = 0;
+			    	SendClientMessage(playerid, 0xFFFFFFAA,"[SKILL] {FFFF00}Jump {FFFFFF}has {FF0000}Disable");
+			    	ShowSkillDialog(playerid);
+			    	return 1;
+			    }
+			}
+			if(listitem == 4)
+			{
+			    ShowSkillDialog(playerid);
+			}
+			if(listitem == 5)
+			{
+			    SendClientMessage(playerid,0xFFFFFFAA,"┏━━━━━━━    How to use      ━━━━━━━┓");
+			    SendClientMessage(playerid, 0xFFFFFFAA,"   Quick Start: Quick accelerate under 5km/h (Double W Key)");
+			    SendClientMessage(playerid, 0xFFFFFFAA,"   Quick Brake: Quick Stop (Double S Key)");
+			    SendClientMessage(playerid, 0xFFFFFFAA,"   Jump: Jump over obstacles (Num 2 Key to 3Combo)");
+			    SendClientMessage(playerid, 0xFFFFFFAA,"   Quick Slide: Quick Slide (Num 4,6 Key)");
+			    SendClientMessage(playerid, 0xFFFFFFAA," ");
+			    SendClientMessage(playerid, 0xFFFFFFAA,"   Developer: [RS]Red_Sider[L]");
+			    SendClientMessage(playerid,0xFFFFFFAA,"┗━━━━━━━━━━━━━━━━━━━━━━━━┛");
+			}
+		}
+	}
     return 1;
 }
 
@@ -1822,6 +2133,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
     new cmd[256], tmp[512], idx, string[256];
     cmd = strtok(cmdtext, idx);
 //------------------------------------------------------------------------------
+    if(strcmp(cmdtext, "/skill") == 0)
+	{
+	    ShowSkillDialog(playerid);
+		return 1;
+	}
 	// Bank System
 	if (strcmp(cmd, "/은행도움말", true) == 0)
 	{
@@ -2909,6 +3225,41 @@ public OnPlayerCommandText(playerid, cmdtext[])
 //                                  Stocks /  Publics                         //
 //============================================================================//
 
+public jumping_1(playerid)//점프타이머
+{
+    KillTimer(JTimer1[playerid]);
+    new Float:A;
+    GetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+	SetVehicleZAngle(GetPlayerVehicleID(playerid), A);
+	SetVehicleAngularVelocity(GetPlayerVehicleID(playerid), 0, 0, 0);
+	JTimer[playerid] = SetTimerEx("jumping",1200,0,"i",playerid);
+}
+
+public jumping(playerid)//점프타이머
+{
+    KillTimer(JTimer[playerid]);
+    Jump[playerid] = 0;
+    Desh[playerid] = 0;
+}
+
+public Deshing(playerid)//칼치기타이머
+{
+    KillTimer(DTimer[playerid]);
+    Desh[playerid] = 0;
+}
+
+public StartTum(playerid)//급출발타이머
+{
+    KillTimer(STimer[playerid]);
+    Startboost[playerid] = 0;
+}
+
+public StopTum(playerid)//급정지타이머
+{
+    KillTimer(StopTimer[playerid]);
+    Stopboost[playerid] = 0;
+}
+
 public HideMessage1(playerid)
 {
 	TextDrawHideForPlayer(playerid, Textdraw1);
@@ -3488,7 +3839,7 @@ stock RemovePlayerWeapon(playerid, weaponid)
 	ResetPlayerWeapons(playerid);
 	for(new sslot = 0; sslot != 12; sslot++)
 	{
-	    if(plyAmmo[sslot] != 0) GivePlayerWeapon(playerid, plyWeapons[sslot], plyAmmo[sslot]);
+	    if(plyAmmo[sslot] != 0) SafeGivePlayerWeapon(playerid, plyWeapons[sslot], plyAmmo[sslot]);
 	}
 	return 1;
 }
@@ -3572,4 +3923,49 @@ stock MySQL_BanCheck(playerid)
 	}
 	mysql_free_result();
 	return 1;
+}
+
+stock GetCarSpeed(playerid)//차량속도 구하는 함수
+{
+    new Float:x,Float:y,Float:z,Float:speed,final_speed;
+    GetVehicleVelocity(GetPlayerVehicleID(playerid),x,y,z);
+    speed = floatsqroot(((x*x)+(y*y))+(z*z))*150;
+    final_speed = floatround(speed,floatround_round);
+    return final_speed;
+}
+
+stock ShowSkillDialog(playerid)//스킬 다이얼로그 함수
+{
+	if (FastSkill[playerid] == 0 && DeshSkill[playerid] == 0 && JumpSkill[playerid] == 0)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {FF0000}[Disable]\n * Quick Slide\t\t {FF0000}[Disable]\n * Jump \t\t{FF0000}[Disable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 0 && DeshSkill[playerid] == 0 && JumpSkill[playerid] == 1)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {FF0000}[Disable]\n * Quick Slide\t\t {FF0000}[Disable]\n * Jump \t\t{00FF00}[Enable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 0 && DeshSkill[playerid] == 1 && JumpSkill[playerid] == 0)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {FF0000}[Disable]\n * Quick Slide\t\t {00FF00}[Enable]\n * Jump \t\t{FF0000}[Disable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 0 && DeshSkill[playerid] == 1 && JumpSkill[playerid] == 1)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {FF0000}[Disable]\n * Quick Slide\t\t {00FF00}[Enable]\n * Jump \t\t{00FF00}[Enable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 1 && DeshSkill[playerid] == 0 && JumpSkill[playerid] == 0)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {00FF00}[Enable]\n * Quick Slide\t\t {FF0000}[Disable]\n * Jump \t\t{FF0000}[Disable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 1 && DeshSkill[playerid] == 0 && JumpSkill[playerid] == 1)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {00FF00}[Enable]\n * Quick Slide\t\t {FF0000}[Disable]\n * Jump \t\t{00FF00}[Enable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 1 && DeshSkill[playerid] == 1 && JumpSkill[playerid] == 0)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Enable all skills\n * Quick Start,Brake\t {00FF00}[Enable]\n * Quick Slide\t\t {00FF00}[Enable]\n * Jump \t\t{FF0000}[Disable]\n \n * ( Information )","Select","Cancel");
+	}
+	if (FastSkill[playerid] == 1 && DeshSkill[playerid] == 1 && JumpSkill[playerid] == 1)
+	{
+		ShowPlayerDialog(playerid,DIALOG_SKILL,DIALOG_STYLE_LIST,"Raycity Skill"," * Disable all skills\n * Quick Start,Brake\t {00FF00}[Enable]\n * Quick Slide\t\t {00FF00}[Enable]\n * Jump \t\t{00FF00}[Enable]\n \n * ( Information )","Select","Cancel");
+	}
 }

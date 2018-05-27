@@ -10002,3 +10002,453 @@
 [14:15:28] >> mysql_retrieve_row( Connection handle: 1 )
 [14:15:28] >> mysql_free_result( Connection handle: 1 )
 [14:15:28] CMySQLHandler::FreeResult() - Result was successfully free'd.
+[14:25:39]  
+[14:25:39] ---------------------------
+[14:25:39] MySQL Debugging activated (05/23/18)
+[14:25:39] ---------------------------
+[14:25:39]  
+[14:25:39] >> mysql_set_charset( Connection handle: 1 )
+[14:25:39] >> mysql_query( Connection handle: 1 )
+[14:25:39] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS playerdata(user VARCHAR(24), password VARCHAR(40), admin INT(10),score INT(20), money INT(20), level INT(20), vip INT(20), tutorial INT(20), kma INT(20), rank INT(20), kills INT(20), deaths INT(20))) - Successfully executed.
+[14:25:39] >> mysql_query( Connection handle: 1 )
+[14:25:39] CMySQLHandler::Query(ALTER TABLE playerdata ADD IF NOT EXISTS (muted INT(20) NOT NULL,jailed INT(20) NOT NULL,frozen INT(20) NOT NULL,mutedtimes INT(20) NOT NULL,jailedtimes INT(20) NOT NULL,frozentimes INT(20) NOT NULL,banned INT(20) NOT NULL,bannedby VARCHAR(24) NOT NULL,logins INT(20) NOT NULL,IP VARCHAR(15) NOT NULL)) - Successfully executed.
+[14:25:39] >> mysql_query( Connection handle: 1 )
+[14:25:39] CMySQLHandler::Query(ALTER TABLE playerdata ADD IF NOT EXISTS (posX Float(20), posY Float(20), posZ Float(20), vworld INT(10), interior INT(10), bank INT(10))) - Successfully executed.
+[14:25:39] >> mysql_query( Connection handle: 1 )
+[14:25:39] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS itemdata(user VARCHAR(24))) - Successfully executed.
+[14:25:39] >> mysql_query( Connection handle: 1 )
+[14:25:39] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_1 INT(10), amount_1 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_2 INT(10), amount_2 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_3 INT(10), amount_3 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_4 INT(10), amount_4 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_5 INT(10), amount_5 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_6 INT(10), amount_6 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_7 INT(10), amount_7 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_8 INT(10), amount_8 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_9 INT(10), amount_9 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_10 INT(10), amount_10 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_11 INT(10), amount_11 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_12 INT(10), amount_12 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_13 INT(10), amount_13 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_14 INT(10), amount_14 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_15 INT(10), amount_15 INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS bandata(admin VARCHAR(20), player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), banned INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS kickdata(year INT(20), month INT(20), day INT(20), hour INT(20), minute INT(20), second INT(20), admin VARCHAR(20), player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), kicked INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS spawndata(year INT(20), month INT(20), day INT(20), hour INT(20), minute INT(20), second INT(20), admin VARCHAR(20), player VARCHAR(20), IP VARCHAR(16), Spawned INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS hackdata(player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), banned INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS vehicledata (model INT(10), numberplate VARCHAR(24), X FLOAT(10), Y FLOAT(10), Z FLOAT(10), angle FLOAT(10), color1 INT(10), color2 INT(10), paintjob INT(10), interior INT(10), world INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS vehpricedata (modelid INT(10), price INT(10)) - An error has occured. (Error ID: 1064, You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1)
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS buildingdata (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), type INT(10), price INT(10), ent_X FLOAT(10), ent_Y FLOAT(10), ent_Z FLOAT(10), ex_X FLOAT(10), ex_Y FLOAT(10), ex_Z FLOAT(10), interior INT(10), locked INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(SELECT * FROM vehpricedata) - An error has occured. (Error ID: 1146, Table 'usrp.vehpricedata' doesn't exist)
+[14:25:40] >> mysql_store_result( Connection handle: 1 )
+[14:25:40] CMySQLHandler::StoreResult() - No data to store.
+[14:25:40] >> mysql_num_rows( Connection handle: 1 )
+[14:25:40] CMySQLHandler::NumRows() - You cannot call this function now. (Reason: Dead Connection)
+[14:25:40] >> mysql_free_result( Connection handle: 1 )
+[14:25:40] CMySQLHandler::FreeResult() - The result is already empty.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS factiondata (id INT(10), name VARCHAR(64), type INT(10), spawn_X FLOAT(10), spawn_Y FLOAT(10), spawn_Z FLOAT(10), spawn_interior INT(10), spawn_world INT(10))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_01 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_02 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_03 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_04 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_05 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_06 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_07 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:40] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_08 VARCHAR(64))) - Successfully executed.
+[14:25:40] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_09 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_10 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_11 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_12 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_13 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_14 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_15 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_16 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_17 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_18 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_19 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_20 VARCHAR(64))) - Successfully executed.
+[14:25:41] >> mysql_query( Connection handle: 1 )
+[14:25:41] CMySQLHandler::Query(SELECT * FROM vehicledata) - Successfully executed.
+[14:25:41] >> mysql_store_result( Connection handle: 1 )
+[14:25:41] CMySQLHandler::StoreResult() - Result was stored.
+[14:25:41] >> mysql_retrieve_row( Connection handle: 1 )
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("model") - 400
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("numberplate") - LS2141
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("X") - 127.13
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("Y") - -260.386
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("Z") - 6.641
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("angle") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("color1") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("color2") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("paintjob") - 3
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("interior") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("world") - 0
+[14:25:41] >> mysql_retrieve_row( Connection handle: 1 )
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("model") - 521
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("numberplate") - LS2985
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("X") - 1461.11
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("Y") - -1742.4
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("Z") - 13.5468
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("angle") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:41] CMySQLHandler::FetchField("color1") - 0
+[14:25:41] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("color2") - 0
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("paintjob") - 3
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("interior") - 0
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("world") - 0
+[14:25:42] >> mysql_retrieve_row( Connection handle: 1 )
+[14:25:42] >> mysql_free_result( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FreeResult() - Result was successfully free'd.
+[14:25:42] >> mysql_query( Connection handle: 1 )
+[14:25:42] CMySQLHandler::Query(SELECT * FROM factiondata) - Successfully executed.
+[14:25:42] >> mysql_store_result( Connection handle: 1 )
+[14:25:42] CMySQLHandler::StoreResult() - Result was stored.
+[14:25:42] >> mysql_retrieve_row( Connection handle: 1 )
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("id") - 1
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("name") - LSPD
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("type") - 1
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("spawn_X") - 127.562
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("spawn_Y") - -254.744
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("spawn_Z") - 1.5781
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("spawn_interior") - 0
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("spawn_world") - 0
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_01") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_02") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_03") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_04") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_05") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_06") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_07") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_08") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_09") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_10") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_11") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_12") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_13") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_14") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_15") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_16") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_17") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_18") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_19") - None
+[14:25:42] >> mysql_fetch_field_row( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FetchField("rank_20") - None
+[14:25:42] >> mysql_retrieve_row( Connection handle: 1 )
+[14:25:42] >> mysql_free_result( Connection handle: 1 )
+[14:25:42] CMySQLHandler::FreeResult() - Result was successfully free'd.
+[23:27:41]  
+[23:27:41] ---------------------------
+[23:27:41] MySQL Debugging activated (05/23/18)
+[23:27:41] ---------------------------
+[23:27:41]  
+[23:27:41] >> mysql_set_charset( Connection handle: 1 )
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS playerdata(user VARCHAR(24), password VARCHAR(40), admin INT(10),score INT(20), money INT(20), level INT(20), vip INT(20), tutorial INT(20), kma INT(20), rank INT(20), kills INT(20), deaths INT(20))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE playerdata ADD IF NOT EXISTS (muted INT(20) NOT NULL,jailed INT(20) NOT NULL,frozen INT(20) NOT NULL,mutedtimes INT(20) NOT NULL,jailedtimes INT(20) NOT NULL,frozentimes INT(20) NOT NULL,banned INT(20) NOT NULL,bannedby VARCHAR(24) NOT NULL,logins INT(20) NOT NULL,IP VARCHAR(15) NOT NULL)) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE playerdata ADD IF NOT EXISTS (posX Float(20), posY Float(20), posZ Float(20), vworld INT(10), interior INT(10), bank INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS itemdata(user VARCHAR(24))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_1 INT(10), amount_1 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_2 INT(10), amount_2 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_3 INT(10), amount_3 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_4 INT(10), amount_4 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_5 INT(10), amount_5 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_6 INT(10), amount_6 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_7 INT(10), amount_7 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_8 INT(10), amount_8 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_9 INT(10), amount_9 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_10 INT(10), amount_10 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_11 INT(10), amount_11 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_12 INT(10), amount_12 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_13 INT(10), amount_13 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_14 INT(10), amount_14 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(ALTER TABLE itemdata ADD IF NOT EXISTS (itemid_15 INT(10), amount_15 INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS bandata(admin VARCHAR(20), player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), banned INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS kickdata(year INT(20), month INT(20), day INT(20), hour INT(20), minute INT(20), second INT(20), admin VARCHAR(20), player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), kicked INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS spawndata(year INT(20), month INT(20), day INT(20), hour INT(20), minute INT(20), second INT(20), admin VARCHAR(20), player VARCHAR(20), IP VARCHAR(16), Spawned INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:41] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS hackdata(player VARCHAR(20), reason VARCHAR(50), IP VARCHAR(16), banned INT(10))) - Successfully executed.
+[23:27:41] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS vehicledata (model INT(10), numberplate VARCHAR(24), X FLOAT(10), Y FLOAT(10), Z FLOAT(10), angle FLOAT(10), color1 INT(10), color2 INT(10), paintjob INT(10), interior INT(10), world INT(10))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS vehpricedata (modelid INT(10), price INT(10)) - An error has occured. (Error ID: 1064, You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1)
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS buildingdata (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64), type INT(10), price INT(10), ent_X FLOAT(10), ent_Y FLOAT(10), ent_Z FLOAT(10), ex_X FLOAT(10), ex_Y FLOAT(10), ex_Z FLOAT(10), interior INT(10), locked INT(10))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(SELECT * FROM vehpricedata) - An error has occured. (Error ID: 1146, Table 'reignking.vehpricedata' doesn't exist)
+[23:27:42] >> mysql_store_result( Connection handle: 1 )
+[23:27:42] CMySQLHandler::StoreResult() - No data to store.
+[23:27:42] >> mysql_num_rows( Connection handle: 1 )
+[23:27:42] CMySQLHandler::NumRows() - You cannot call this function now. (Reason: Dead Connection)
+[23:27:42] >> mysql_free_result( Connection handle: 1 )
+[23:27:42] CMySQLHandler::FreeResult() - The result is already empty.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(CREATE TABLE IF NOT EXISTS factiondata (id INT(10), name VARCHAR(64), type INT(10), spawn_X FLOAT(10), spawn_Y FLOAT(10), spawn_Z FLOAT(10), spawn_interior INT(10), spawn_world INT(10))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_01 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_02 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_03 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_04 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_05 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_06 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_07 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_08 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_09 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_10 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_11 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_12 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_13 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_14 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_15 VARCHAR(64))) - Successfully executed.
+[23:27:42] >> mysql_query( Connection handle: 1 )
+[23:27:42] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_16 VARCHAR(64))) - Successfully executed.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_17 VARCHAR(64))) - Successfully executed.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_18 VARCHAR(64))) - Successfully executed.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_19 VARCHAR(64))) - Successfully executed.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(ALTER TABLE factiondata ADD IF NOT EXISTS (rank_20 VARCHAR(64))) - Successfully executed.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(SELECT * FROM vehicledata) - Successfully executed.
+[23:27:43] >> mysql_store_result( Connection handle: 1 )
+[23:27:43] CMySQLHandler::StoreResult() - Result was stored.
+[23:27:43] >> mysql_retrieve_row( Connection handle: 1 )
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("model") - 400
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("numberplate") - LS2141
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("X") - 127.13
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("Y") - -260.386
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("Z") - 6.641
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("angle") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("color1") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("color2") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("paintjob") - 3
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("interior") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("world") - 0
+[23:27:43] >> mysql_retrieve_row( Connection handle: 1 )
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("model") - 521
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("numberplate") - LS2985
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("X") - 1461.11
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("Y") - -1742.4
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("Z") - 13.5468
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("angle") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("color1") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("color2") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("paintjob") - 3
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("interior") - 0
+[23:27:43] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FetchField("world") - 0
+[23:27:43] >> mysql_retrieve_row( Connection handle: 1 )
+[23:27:43] >> mysql_free_result( Connection handle: 1 )
+[23:27:43] CMySQLHandler::FreeResult() - Result was successfully free'd.
+[23:27:43] >> mysql_query( Connection handle: 1 )
+[23:27:43] CMySQLHandler::Query(SELECT * FROM factiondata) - Successfully executed.
+[23:27:43] >> mysql_store_result( Connection handle: 1 )
+[23:27:43] CMySQLHandler::StoreResult() - Result was stored.
+[23:27:43] >> mysql_retrieve_row( Connection handle: 1 )
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("id") - 1
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("name") - LSPD
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("type") - 1
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("spawn_X") - 127.562
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("spawn_Y") - -254.744
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("spawn_Z") - 1.5781
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("spawn_interior") - 0
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("spawn_world") - 0
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_01") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_02") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_03") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_04") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_05") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_06") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_07") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_08") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_09") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_10") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_11") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_12") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_13") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_14") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_15") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_16") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_17") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_18") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_19") - None
+[23:27:44] >> mysql_fetch_field_row( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FetchField("rank_20") - None
+[23:27:44] >> mysql_retrieve_row( Connection handle: 1 )
+[23:27:44] >> mysql_free_result( Connection handle: 1 )
+[23:27:44] CMySQLHandler::FreeResult() - Result was successfully free'd.
